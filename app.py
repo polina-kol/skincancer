@@ -7,7 +7,9 @@ from io import BytesIO
 import os
 import torch.nn as nn
 import torchvision.models as models
-
+st.set_page_config(page_title="Skin Cancer Classifier", layout="centered")
+st.title("🩺 Skin Cancer Classifier")
+st.markdown("### Определяет доброкачественные и злокачественные опухоли на основе изображения.")
 # Установка устройства
 DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 
@@ -43,10 +45,6 @@ def predict_image(image):
         confidence = probs[0][pred_idx].item()
     return CLASS_NAMES[pred_idx], confidence
 
-# Интерфейс
-st.set_page_config(page_title="Skin Cancer Classifier", layout="centered")
-st.title("🩺 Skin Cancer Classifier")
-st.markdown("### Определяет доброкачественные и злокачественные опухоли на основе изображения.")
 
 # Информация о модели
 with st.expander("ℹ️ О модели"):
